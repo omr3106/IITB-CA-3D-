@@ -1,0 +1,12 @@
+{
+  "name": "iitb-techfest-2026",
+  "version": "1.0.0",
+  "description": "Full stack IIT Bombay Techfest 2026 site",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

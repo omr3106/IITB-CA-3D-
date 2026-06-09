@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IIT Bombay Techfest 2026</title>
+    <meta name="description" content="An immersive 3D desktop-style website for IIT Bombay Techfest 2026 with interactive windows, motion, and futuristic visuals." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="bg"></canvas>
+
+    <div class="desktop-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <span class="brand-dot"></span>
+          <div>
+            <div class="brand-name">IITB TECHFEST 2026</div>
+            <div class="brand-sub">Festival Guide</div>
+          </div>
+        </div>
+
+        <div class="top-center">
+          <span class="status-pill" id="themeBadge">Campus Guide</span>
+          <span class="status-pill">Festival Menu</span>
+        </div>
+
+        <div class="top-actions">
+          <span class="status-pill" id="timeLabel">--:--</span>
+          <div class="window-controls" aria-label="window controls">
+            <button class="close" aria-label="close"></button>
+            <button class="min" aria-label="minimize"></button>
+            <button class="max" aria-label="maximize"></button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-grid">
+          <article class="panel hero-copy">
+            <div class="eyebrow">IIT Bombay • Techfest 2026</div>
+            <h1>IIT Bombay Techfest 2026</h1>
+            <p class="lead">
+              A sharper guide to the week at IIT Bombay — from the opening ceremony and major showcases to the workshops,
+              campus routes, and the moments that shape the festival experience.
+            </p>
+
+            <div class="badges">
+              <span class="badge">Opening Ceremony</span>
+              <span class="badge">Innovation Zones</span>
+              <span class="badge">Hands-on Workshops</span>
+              <span class="badge">Campus Flow</span>
+            </div>
+
+            <div class="cta-row">
+              <a class="btn primary" href="/opening" id="launchBtn">Explore Techfest</a>
+              <a class="btn" href="/schedule">View Schedule</a>
+            </div>
+
+            <div class="mini-stats">
+              <div class="stat-card"><strong>50+</strong><span>Techfest events</span></div>
+              <div class="stat-card"><strong>3</strong><span>festival days</span></div>
+              <div class="stat-card"><strong>1</strong><span>campus-wide experience</span></div>
+            </div>
+          </article>
+
+          <article class="panel terminal-card">
+            <div class="terminal-header">
+              <div>
+                <div class="terminal-title">Festival Hub</div>
+                <div class="terminal-meta">A simple guide to the week</div>
+              </div>
+              <span class="status-pill">Live Overview</span>
+            </div>
+
+            <div class="terminal-window">
+              <div class="terminal-line"><span class="prompt">$</span> opening IIT Bombay Techfest 2026</div>
+              <div class="terminal-line"><span class="prompt">$</span> loading festival map and event highlights...</div>
+              <div class="terminal-line"><span class="prompt">$</span> sync complete: exhibitions, workshops, guest talks</div>
+              <div class="terminal-line"><span class="prompt">$</span> ready for the campus experience</div>
+              <div class="terminal-line">[NOTE] <span id="appNotes">Open any section to explore the festival flow.</span></div>
+            </div>
+          </article>
+        </section>
+
+        <section id="experience" class="desktop-grid">
+          <article class="feature-card">
+            <h3>Festival pulse</h3>
+            <p>Move through the week with clear entry points to the opening, exhibitions, workshop schedule, and the campus layout visitors rely on.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Designed for the week</h3>
+            <p>Every section is arranged like a real festival guide, so the program feels easier to scan, plan, and explore on the go.</p>
+          </article>
+        </section>
+
+        <section class="desktop-grid" id="schedule">
+          <a class="window-card" href="/opening">
+            <div class="tag">Opening</div>
+            <h3>Opening Ceremony</h3>
+            <p>Begin the festival with the grand launch, keynote moments, and the first look at the campus-wide showcase.</p>
+          </a>
+          <a class="window-card" href="/exhibitions">
+            <div class="tag">Exhibitions</div>
+            <h3>Innovation Showcase</h3>
+            <p>Explore student projects, prototype displays, and exhibition zones that highlight the spirit of IIT Bombay Techfest.</p>
+          </a>
+          <a class="window-card" href="/workshops">
+            <div class="tag">Workshops</div>
+            <h3>Hands-on Sessions</h3>
+            <p>Discover live sessions, practical labs, and interactive workshops designed to invite curiosity and participation.</p>
+          </a>
+          <a class="window-card" href="/venue">
+            <div class="tag">Campus</div>
+            <h3>Venue Guide</h3>
+            <p>Move through the festival map with clear venue highlights, event zones, and easy-to-follow information for visitors.</p>
+          </a>
+        </section>
+
+        <section class="desktop-grid">
+          <article class="timeline-card">
+            <h3>Techfest flow</h3>
+            <ul>
+              <li>09:30 — Opening ceremony and campus welcome</li>
+              <li>11:00 — Exhibition halls, prototyping zones, and live showcases</li>
+              <li>13:30 — Workshops, hands-on labs, and guided sessions</li>
+              <li>16:00 — Evening highlights and standout festival moments</li>
+            </ul>
+          </article>
+          <article class="timeline-card">
+            <h3>Why it feels premium</h3>
+            <ul>
+              <li>Clear festival lanes with faster navigation between key areas</li>
+              <li>Polished visual hierarchy, stronger cards, and calmer motion</li>
+              <li>Built to feel like a real guide rather than a generic demo page</li>
+            </ul>
+          </article>
+        </section>
+      </main>
+
+      <nav class="dock" aria-label="dock navigation">
+        <a class="dock-btn" href="/opening" title="Opening">Opening</a>
+        <a class="dock-btn" href="/exhibitions" title="Exhibitions">Exhibitions</a>
+        <a class="dock-btn" href="/venue" title="Venue">Venue</a>
+        <a class="dock-btn" href="/schedule" title="Schedule">Schedule</a>
+      </nav>
+    </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
