@@ -9,14 +9,14 @@ const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true 
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-const ambient = new THREE.AmbientLight(0xe5ebf3, 0.55);
-const point = new THREE.PointLight(0xdfe7f3, 0.9, 18);
+const ambient = new THREE.AmbientLight(0xffffff, 0.45);
+const point = new THREE.PointLight(0xffdfb8, 0.9, 18);
 point.position.set(3, 4, 4);
-const point2 = new THREE.PointLight(0xbfc7d6, 0.7, 18);
+const point2 = new THREE.PointLight(0xbfd6ff, 0.7, 18);
 point2.position.set(-4, -2, 2);
 scene.add(ambient, point, point2);
 
-const grid = new THREE.GridHelper(18, 18, 0xcfd7e4, 0x202837);
+const grid = new THREE.GridHelper(18, 18, 0xcfd7e4, 0xe5ebf7);
 grid.material.opacity = 0.18;
 grid.material.transparent = true;
 scene.add(grid);
@@ -25,7 +25,7 @@ const group = new THREE.Group();
 scene.add(group);
 
 const geometry = new THREE.TorusGeometry(1.15, 0.22, 16, 120);
-const ringMat = new THREE.MeshStandardMaterial({ color: 0xaeb9ca, emissive: 0x14212e, metalness: 0.4, roughness: 0.35 });
+const ringMat = new THREE.MeshStandardMaterial({ color: 0xb7c7e1, emissive: 0x18253a, metalness: 0.25, roughness: 0.35 });
 const ring = new THREE.Mesh(geometry, ringMat);
 ring.position.set(0, 1.4, 0);
 ring.rotation.x = 1.1;
@@ -34,7 +34,7 @@ ring.rotation.y = 0.4;
 group.add(ring);
 
 const boxGeo = new THREE.BoxGeometry(0.55, 0.55, 0.55);
-const boxMat = new THREE.MeshStandardMaterial({ color: 0x9aa7bd, emissive: 0x171f2c, metalness: 0.35, roughness: 0.24 });
+const boxMat = new THREE.MeshStandardMaterial({ color: 0xb8c7e6, emissive: 0x1c2a3f, metalness: 0.18, roughness: 0.24 });
 for (let i = 0; i < 9; i++) {
   const box = new THREE.Mesh(boxGeo, boxMat);
   box.position.set((i % 3 - 1) * 1.8, Math.floor(i / 3) * 1.1 - 0.6, -2 + (i % 4) * 0.6);
@@ -51,7 +51,7 @@ for (let i = 0; i < count; i++) {
   pos[i * 3 + 2] = (Math.random() - 0.5) * 12;
 }
 particles.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-const particleMat = new THREE.PointsMaterial({ color: 0xdbe4ee, size: 0.025, transparent: true, opacity: 0.7 });
+const particleMat = new THREE.PointsMaterial({ color: 0x95a9c5, size: 0.025, transparent: true, opacity: 0.55 });
 const particleField = new THREE.Points(particles, particleMat);
 scene.add(particleField);
 
@@ -86,10 +86,13 @@ function animate() {
 animate();
 
 const timeLabel = document.getElementById('timeLabel');
-if (timeLabel) {
+const taskTime = document.getElementById('taskTime');
+if (timeLabel || taskTime) {
   function updateClock() {
     const now = new Date();
-    timeLabel.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const text = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    if (timeLabel) timeLabel.textContent = text;
+    if (taskTime) taskTime.textContent = text;
   }
   updateClock();
   setInterval(updateClock, 1000);
@@ -114,6 +117,23 @@ if (themeBadge && hero) {
 const appNotes = document.getElementById('appNotes');
 const launchBtn = document.getElementById('launchBtn');
 const windows = document.querySelectorAll('.window-card');
+const startButton = document.getElementById('startButton');
+const startMenu = document.getElementById('startMenu');
+
+if (startButton && startMenu) {
+  startButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    startMenu.classList.toggle('open');
+    startMenu.setAttribute('aria-hidden', String(!startMenu.classList.contains('open')));
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!startMenu.contains(event.target) && !startButton.contains(event.target)) {
+      startMenu.classList.remove('open');
+      startMenu.setAttribute('aria-hidden', 'true');
+    }
+  });
+}
 
 if (appNotes) {
   windows.forEach((item) => {
